@@ -1,0 +1,234 @@
+:root {
+  --bg-color: #ececec;     
+  --surface: #ffffff;
+  --primary: #18202f;
+  --accent: #2563eb;
+  --text-muted: #6b7280; 
+  --border: #e5e7eb;
+}
+
+body {
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  color: var(--primary);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* ================== HEADER ================== */
+header {
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+/* ================== GRID DE PIEZAS ================== */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 25px;
+  padding: 0 40px 40px 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+main .pieza {
+  background: var(--surface);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+main .pieza:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pieza-titulo {
+  padding: 12px 10px;
+  text-align: center;
+  background: #18202f;
+  border-bottom: 1px solid var(--border);
+}
+
+.pieza-titulo span {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  transition: color 0.2s;
+}
+
+main .pieza:hover .pieza-titulo span {
+  color: var(--accent); 
+}
+
+
+main img {
+  width: 100%;
+  aspect-ratio: 1 / 1; 
+  object-fit: cover; 
+  display: block;
+}
+
+/* ================== MODAL REPRODUCTOR ================== */
+#contenedormodal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(24, 32, 47, 0.8);
+  top: 0;
+  left: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+#modal {
+  position: relative; 
+  width: 380px;
+  background: white;
+  padding: 40px 30px 30px 30px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+
+#cerrarModal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #6b7280;
+  cursor: pointer;
+  line-height: 1;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+#cerrarModal:hover {
+  color: #ef4444; 
+  transform: scale(1.2);
+}
+
+#modal img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+#modal h3 {
+  margin: 10px 0 25px 0;
+  font-size: 22px;
+  color: var(--primary);
+}
+
+#flechas {
+  position: absolute;
+  top: 50%;
+  width: 115%;
+  left: -7.5%;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+#flechas button {
+  pointer-events: auto;
+  background: var(--surface);
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#flechas button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+#reproductor {
+  width: 100%;
+}
+
+#botones {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+#botones button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+#botones button#play {
+  background: var(--accent);
+}
+
+#botones button:hover {
+  opacity: 0.9;
+}
+
+#rango {
+  width: 100%;
+  cursor: pointer;
+  accent-color: var(--accent);
+  height: 6px;
+  border-radius: 5px;
+}
+
+/* ================== RESPONSIVE ================== */
+@media (max-width: 792px) {
+  main {
+    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  #modal {
+    width: 85%;
+    padding: 20px;
+  }
+  #flechas {
+    width: 100%;
+    left: 0;
+    top: -60px;
+  }
+}

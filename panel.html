@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Panel de Control - Portafolio de Música</title>
+<link rel="stylesheet" href="assets/css/panel.css">
+</head>
+<body>
+
+<h2>PANEL DE CONTROL</h2>
+
+<table id="tablaCanciones">
+<thead>
+<tr>
+  <th>Portada</th>
+  <th>Audio</th>
+  <th>Título</th>
+  <th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+<!--JS cargará los datos aquí -->
+</tbody>
+</table>
+
+<div style="text-align:center;">
+  <span class="btn-nueva" id="mostrarCrear">Añadir nueva canción</span>
+</div>
+
+<form id="formulario" method="POST" action="backend/panelCRUD.php" enctype="multipart/form-data">
+  <div class="form-header">
+    <h3 id="tituloForm">Agregar nueva canción</h3>
+    <span id="cerrarForm">✖</span>
+  </div>
+
+  <input type="hidden" name="editar_id" value="">
+  Portada (imagen): <input type="file" name="portada" accept="image/*" required><br>
+  Audio (mp3): <input type="file" name="audio" accept="audio/*" required><br>
+  Título: <input type="text" name="titulo" placeholder="Título de la canción" required><br>
+  
+  <input type="submit" name="accion" value="crear">
+</form>
+
+<script src="assets/js/panel.js"></script>
+</body>
+</html>

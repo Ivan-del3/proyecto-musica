@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Portafolio de Música</title>
+    <link rel="stylesheet" href="assets/css/front.css"> 
+  </head>
+  <body>
+    <header>
+      <h1>Reproductor de música</h1>
+    </header>
+    <main id="contenedorimagenes"></main>
+
+    <div id="contenedormodal">
+      <div id="modal">
+        <span id="cerrarModal">&times;</span> 
+
+        <div id="flechas">
+          <button id="anterior">⬅</button>
+          <button id="siguiente">➡</button>
+        </div>
+
+        <div id="contienepieza">
+          <img src="" alt="">
+          <h3></h3>
+          <div id="reproductor">
+            <input type="range" id="rango" value="0">
+            <div id="botones">
+              <button id="play">Play</button>
+              <button id="pausa">Pausa</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="assets/js/front.js"></script>
+  </body>
+</html>
