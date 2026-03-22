@@ -8,9 +8,10 @@ const inputTitulo = form.querySelector('input[name="titulo"]');
 const inputPortada = form.querySelector('input[name="portada"]');
 const inputAudio = form.querySelector('input[name="audio"]');
 const submitBtn = form.querySelector('input[type="submit"]');
+const modalFormulario = document.getElementById('modalFormulario');
 
-// oculto al cargar la página
-form.style.display = 'none';
+// Ocultar modal al cargar
+modalFormulario.style.display = 'none';
 
 function cargarTabla() {
   fetch("backend/endpoint.php")
@@ -31,12 +32,13 @@ function cargarTabla() {
         tabla.appendChild(tr);
       });
 
+      // EDITAR
       document.querySelectorAll('.editar').forEach(btn => {
         btn.onclick = () => {
           const id = btn.dataset.id;
           const fila = piezas.find(p => p.id == id);
           if(fila){
-            form.style.display = 'block';
+            modalFormulario.style.display = 'flex';
             tituloForm.textContent = 'Editar canción';
             inputEditar.value = fila.id;
             inputTitulo.value = fila.titulo;
@@ -47,6 +49,7 @@ function cargarTabla() {
         }
       });
 
+      // ELIMINAR
       document.querySelectorAll('.eliminar').forEach(a => {
         a.onclick = (e) => {
           if(!confirm('¿Seguro que quieres eliminar esta canción?')){
@@ -57,8 +60,9 @@ function cargarTabla() {
     });
 }
 
+// NUEVA CANCIÓN
 btnCrear.onclick = () => {
-  form.style.display = 'block';
+  modalFormulario.style.display = 'flex';
   tituloForm.textContent = 'Agregar nueva canción';
   inputEditar.value = '';
   inputTitulo.value = '';
@@ -69,9 +73,16 @@ btnCrear.onclick = () => {
   submitBtn.value = 'crear';
 };
 
+// CERRAR MODAL
 document.getElementById('cerrarForm').onclick = () => {
-  form.style.display = 'none';
+  modalFormulario.style.display = 'none';
 };
 
-// Cargar tabla al iniciar
+modalFormulario.onclick = (e) => {
+  if(e.target === modalFormulario){
+    modalFormulario.style.display = 'none';
+  }
+};
+
+// Cargar tabla al inicio
 cargarTabla();

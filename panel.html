@@ -27,19 +27,22 @@
   <span class="btn-nueva" id="mostrarCrear">Añadir nueva canción</span>
 </div>
 
-<form id="formulario" method="POST" action="backend/panelCRUD.php" enctype="multipart/form-data">
-  <div class="form-header">
-    <h3 id="tituloForm">Agregar nueva canción</h3>
-    <span id="cerrarForm">✖</span>
-  </div>
 
-  <input type="hidden" name="editar_id" value="">
-  Portada (imagen): <input type="file" name="portada" accept="image/*" required><br>
-  Audio (mp3): <input type="file" name="audio" accept="audio/*" required><br>
-  Título: <input type="text" name="titulo" placeholder="Título de la canción" required><br>
-  
-  <input type="submit" name="accion" value="crear">
-</form>
+<div id="modalFormulario">
+  <div id="contenidoFormulario">
+    <span id="cerrarForm">✖</span> 
+    <form id="formulario" method="POST" action="backend/panelCRUD.php" enctype="multipart/form-data">
+      <h3 id="tituloForm">Agregar nueva canción</h3>
+
+      <input type="hidden" name="editar_id" value="">
+      Portada (imagen): <input type="file" name="portada" accept="image/*" required><br>
+      Audio (mp3): <input type="file" name="audio" accept="audio/*" required><br>
+      Título: <input type="text" name="titulo" placeholder="Título de la canción" required><br>
+      
+      <input type="submit" name="accion" value="crear">
+    </form>
+  </div>
+</div>
 
 <script src="assets/js/panel.js"></script>
 </body>
