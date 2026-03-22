@@ -1,0 +1,18 @@
+# --- Sistema ---
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# --- Editores (VS Code, Sublime, etc) ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- SQLite (Archivos temporales de escritura) ---
+*.db-journal
+*.db-wal
+
+# --- Logs y Temporales ---
+*.log
+/temp/
